@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CS-499 Module One — ePortfolio</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container hero-inner">
+        <h1>CS-499 Module One</h1>
+        <p class="tagline">Artifact viewer. Upload the PDF to display below.</p>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <article class="content-card container">
+        <h2>Module One Artifact</h2>
+        <p>
+          This page displays the Module One document if a PDF named
+          <code>CS499_Module_One.pdf</code> is present in this folder. You can also
+          download the original file if provided.
+        </p>
+
+        <section>
+          <h3>Embedded PDF</h3>
+          <p class="muted">If you see a blank area, the PDF hasn’t been uploaded yet.</p>
+          <object data="CS499_Module_One.pdf" type="application/pdf" width="100%" height="800px">
+            <p>
+              PDF preview unavailable. <a class="link" href="CS499_Module_One.pdf">Download the PDF</a>.
+            </p>
+          </object>
+        </section>
+
+        <section>
+          <h3>Downloads</h3>
+          <ul>
+            <li><a class="link" href="CS499_Module_One.pdf">Module One (PDF)</a></li>
+            <li><a class="link" href="CS499_Module_One.docx">Module One (DOCX)</a></li>
+          </ul>
+        </section>
+
+        <p><a class="link" href="../">← Back to ePortfolio</a></p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© <span id="year"></span> Shekhar Chaudhary</small>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+  </html>
+
