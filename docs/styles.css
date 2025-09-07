@@ -46,6 +46,8 @@ body{
 .content-card h2{ margin-top: 0; font-size: 1.75rem; color: var(--green); }
 .content-card h3{ margin: 1.5rem 0 .25rem; color: var(--green); }
 .content-card p{ color: var(--muted); }
+.content-card pre{ background:#f1f5f9; border:1px solid #e2e8f0; padding:12px; border-radius:8px; overflow:auto; }
+.content-card code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:.95rem; color:#0f172a; }
 
 .link{ color: var(--green); text-decoration: none; font-weight: 700; }
 .link:hover{ text-decoration: underline; }
