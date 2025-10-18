@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Enhancement Two: Algorithms & Data Structures — ePortfolio</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container hero-inner">
+        <h1>Enhancement Two: Algorithms & Data Structures</h1>
+        <p class="tagline">CS-300 Data Structures Project</p>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <article class="content-card container">
+        <h2>Milestone Three: Enhancement Two – Algorithms and Data Structures</h2>
+
+        <h3>Artifact Overview</h3>
+        <p>
+          The artifact I selected for Category Two: Algorithms and Data Structures is my sorting and searching
+          program from CS-300. This program was originally created to demonstrate fundamental algorithmic
+          principles, including linear search, binary search, and basic sorting methods. While the original
+          version applied these concepts successfully, it did not fully explore efficiency and scalability
+          when working with larger datasets.
+        </p>
+        <p>
+          I chose this artifact for enhancement because it provides a strong foundation for demonstrating
+          algorithm design, performance trade-offs, and optimization—skills essential for developing scalable
+          systems and preparing for real-world software engineering and AI-related roles.
+        </p>
+
+        <h3>High-Impact Enhancements Implemented</h3>
+
+        <h4>1. Advanced Searching Structures (HashMap and Binary Search)</h4>
+        <p>
+          After loading bids, I built a hash map index for O(1) average-case lookup by bidId and maintained
+          a sorted vector to enable O(log n) binary search by title. This enhancement allows me to compare
+          constant-time lookups against logarithmic searches, reinforcing the importance of selecting
+          appropriate data structures for specific use cases.
+        </p>
+
+        <h4>2. Third Sorting Algorithm with Stability Discussion (MergeSort)</h4>
+        <p>
+          In addition to Selection Sort and QuickSort, I implemented MergeSort, which provides stability at
+          the cost of additional memory. By comparing QuickSort's speed, MergeSort's stability, and Selection
+          Sort's inefficiency, I highlighted trade-offs in time complexity, space usage, and output reliability.
+        </p>
+
+        <h4>3. Reproducible Benchmarking with Modern Timing Tools</h4>
+        <p>
+          To provide measurable evidence, I replaced <code>clock()</code> with <code>std::chrono::steady_clock</code>
+          and exported results to a CSV file for analysis. This change ensures accuracy, reproducibility, and
+          professional-level reporting of runtime performance.
+        </p>
+
+        <h3>Performance Results</h3>
+        <p>Preliminary benchmarks using the 17,937-row dataset showed:</p>
+        <div class="grid three">
+          <section class="card">
+            <h4>QuickSort</h4>
+            <p style="font-size: 2rem; color: var(--accent-primary); font-weight: 700; margin: 0.5rem 0;">~42ms</p>
+            <p style="font-size: 0.9rem;">Fastest but unstable</p>
+          </section>
+          <section class="card">
+            <h4>MergeSort</h4>
+            <p style="font-size: 2rem; color: var(--accent-secondary); font-weight: 700; margin: 0.5rem 0;">~57ms</p>
+            <p style="font-size: 0.9rem;">Stable, uses more memory</p>
+          </section>
+          <section class="card">
+            <h4>Selection Sort</h4>
+            <p style="font-size: 2rem; color: var(--muted); font-weight: 700; margin: 0.5rem 0;">>12,000ms</p>
+            <p style="font-size: 0.9rem;">Baseline for comparison</p>
+          </section>
+        </div>
+        <p>
+          These results directly connect theoretical Big-O analysis to real-world outcomes, demonstrating
+          measurable performance improvements and algorithmic efficiency.
+        </p>
+
+        <h3>What I Learned</h3>
+        <p>
+          Effective enhancement is not about adding complexity for its own sake but about making thoughtful,
+          purposeful design choices. Implementing the hash map required balancing collision handling and memory
+          reallocation strategies, while building the binary search index emphasized the importance of sorted data.
+        </p>
+        <p>
+          MergeSort added an opportunity to discuss algorithm stability, which is often overlooked in entry-level
+          programs. One challenge was ensuring benchmark results remained consistent and interpretable, which I
+          resolved by running multiple trials and exporting results for visualization.
+        </p>
+        <p>
+          Through this work, I deepened my understanding of theoretical algorithm analysis, practical performance
+          testing, and the communication of results in ways meaningful to both technical and professional audiences.
+        </p>
+
+        <h3>Course Outcomes Addressed</h3>
+        <div class="grid two">
+          <section class="card">
+            <h4>Algorithmic Design & Analysis</h4>
+            <p>
+              Demonstrated ability to design, implement, and evaluate multiple sorting and searching algorithms
+              with comprehensive Big-O complexity analysis and empirical benchmarking.
+            </p>
+          </section>
+          <section class="card">
+            <h4>Data Structure Selection</h4>
+            <p>
+              Applied appropriate data structures (hash maps, sorted vectors) to optimize performance for
+              specific use cases, achieving O(1) and O(log n) search times.
+            </p>
+          </section>
+          <section class="card">
+            <h4>Performance Optimization</h4>
+            <p>
+              Identified performance bottlenecks and implemented optimizations that resulted in measurable
+              improvements (QuickSort 285x faster than Selection Sort).
+            </p>
+          </section>
+          <section class="card">
+            <h4>Trade-off Management</h4>
+            <p>
+              Analyzed and communicated trade-offs between time complexity, space complexity, and algorithm
+              stability to make informed engineering decisions.
+            </p>
+          </section>
+        </div>
+
+        <h3>Technical Implementation</h3>
+        <p><strong>File Enhanced:</strong> <code>VectorSorting.cpp</code></p>
+        <p>
+          The enhancement transformed this program from a basic sorting demonstration into a comprehensive
+          algorithms and data structures showcase. Instead of only running Selection Sort and QuickSort on bids,
+          I now demonstrate how multiple sorting algorithms (Selection, Quick, Merge) compare in terms of
+          stability, memory use, and runtime performance.
+        </p>
+
+        <h3>Repository & Resources</h3>
+        <p>
+          <a class="link" href="https://github.com/shekharchaudhary/CS-300" target="_blank" rel="noopener">
+            View Complete Project on GitHub →
+          </a>
+        </p>
+
+        <p style="margin-top: 3rem;">
+          <a class="btn primary" href="../index.html">← Back to Portfolio</a>
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© <span id="year"></span> Shekhar Chaudhary</small>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

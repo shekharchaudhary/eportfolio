@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Enhancement Three: Databases — ePortfolio</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container hero-inner">
+        <h1>Enhancement Three: Databases</h1>
+        <p class="tagline">CS-340 Client/Server Development</p>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <article class="content-card container">
+        <h2>Milestone Four: Enhancement Three – Databases</h2>
+
+        <h3>Introduction</h3>
+        <p>
+          The database enhancement I implemented for this milestone originated from my CS-340 (Client/Server
+          Development) project and was further aligned with the data design concepts explored in CS-300 (Data
+          Structures). The original artifact involved developing a MongoDB-driven application for managing and
+          retrieving animal shelter data using a web dashboard interface.
+        </p>
+        <p>
+          For this enhancement, I focused on normalizing the schema, adding stored procedures for core database
+          operations, and introducing role-based access control (RBAC) to strengthen both the usability and
+          security of the system.
+        </p>
+
+        <h3>Enhancement Goals</h3>
+        <p>
+          The goal of this enhancement was to improve the scalability, security, and maintainability of the
+          database component by ensuring that the schema adhered to third normal form (3NF) and that user
+          operations were governed by defined roles (e.g., admin, staff, viewer). These improvements directly
+          contribute to the Computer Science program outcomes related to secure database design, query
+          optimization, and adversarial-aware software architecture.
+        </p>
+
+        <h3>Artifact Description</h3>
+        <p>
+          The database originally consisted of a single "Users" and "Animals" collection managed through MongoDB.
+          While functional, it lacked normalized relationships and centralized security enforcement.
+        </p>
+
+        <h4>For this milestone, I enhanced the artifact by:</h4>
+        <ul style="color: var(--muted); line-height: 1.8; margin-left: 2rem;">
+          <li>
+            <strong>Normalizing Tables:</strong> Breaking down unstructured collections into smaller relational
+            entities (Users, Roles, Permissions, and Animals). This eliminates redundancy and ensures data consistency.
+          </li>
+          <li>
+            <strong>Implementing Stored Procedures:</strong> Creating procedures for repeated operations such as
+            adding users and inserting animal records while validating input roles and permissions.
+          </li>
+          <li>
+            <strong>Integrating Role-Based Access Control:</strong> Restricting actions to specific roles — for
+            example, only administrators can add new users, and only registered users can add or modify animals.
+          </li>
+        </ul>
+
+        <h3>Stored Procedure Implementation</h3>
+        <p>
+          One of the major enhancements was implementing a stored procedure for secure user creation. This
+          procedure ensures only predefined roles are accepted, preventing unauthorized privilege escalation.
+          Furthermore, each user's password is hashed using the PBKDF2 algorithm (pbkdf2_sha256) before storage,
+          ensuring that sensitive credentials are never stored in plain text.
+        </p>
+
+        <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--accent-primary);">
+          <h4 style="margin-top: 0; color: var(--text-bright);">Secure User Creation Pseudocode</h4>
+          <pre style="margin: 0; overflow-x: auto;"><code>PROCEDURE AddUser(username, password, role)
+  IF role NOT IN ('admin', 'staff', 'viewer') THEN
+    RAISE ERROR 'Invalid role specified'
+  END IF
+
+  hashed_password = PBKDF2_SHA256(password)
+
+  INSERT INTO Users (username, hashed_password, role, created_at)
+  VALUES (username, hashed_password, role, CURRENT_TIMESTAMP)
+
+  RETURN success_message
+END PROCEDURE</code></pre>
+        </div>
+
+        <h3>Security Enhancements</h3>
+        <p>
+          Another enhancement involved modularizing authentication into separate files (<code>Authentication.py</code>)
+          to improve code readability and maintain separation of concerns between the application logic and
+          authentication logic.
+        </p>
+
+        <div class="grid two">
+          <section class="card">
+            <h4>Password Security</h4>
+            <p>
+              Implemented PBKDF2-SHA256 hashing algorithm for password storage, ensuring credentials are never
+              stored in plain text and protecting against rainbow table attacks.
+            </p>
+          </section>
+          <section class="card">
+            <h4>Role-Based Access Control</h4>
+            <p>
+              Defined three user roles (admin, staff, viewer) with specific permissions, enforcing the principle
+              of least privilege throughout the application.
+            </p>
+          </section>
+          <section class="card">
+            <h4>Input Validation</h4>
+            <p>
+              All stored procedures validate input parameters before execution, preventing SQL injection and
+              ensuring data integrity at the database layer.
+            </p>
+          </section>
+          <section class="card">
+            <h4>Schema Normalization</h4>
+            <p>
+              Achieved 3NF by separating Users, Roles, Permissions, and Animals into distinct tables, eliminating
+              redundancy and improving data consistency.
+            </p>
+          </section>
+        </div>
+
+        <h3>MongoDB Operations</h3>
+        <p>Key database operations performed during development and testing:</p>
+        <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+          <code style="display: block; white-space: pre-wrap; font-size: 0.9rem; color: var(--accent-tertiary);">
+# Navigate to dataset directory
+cd /usr/local/datasets
+
+# MongoDB Shell Commands
+show dbs                # Lists all databases
+use enron              # Switch to enron database
+show collections       # Lists all collections
+db.emails.findOne()    # Retrieve a sample document
+
+# Performance Analysis
+db.emails.stats()      # Get collection statistics
+db.emails.totalSize()  # Calculate total collection size
+          </code>
+        </div>
+
+        <h3>Course Outcomes Addressed</h3>
+        <div class="grid two">
+          <section class="card">
+            <h4>Database Normalization</h4>
+            <p>
+              Demonstrated expertise in schema design by normalizing MongoDB collections to 3NF, eliminating
+              redundancy and ensuring data integrity.
+            </p>
+          </section>
+          <section class="card">
+            <h4>Query Optimization</h4>
+            <p>
+              Implemented stored procedures to encapsulate complex operations, improving performance and
+              maintainability while reducing code duplication.
+            </p>
+          </section>
+          <section class="card">
+            <h4>Security Mindset</h4>
+            <p>
+              Applied defensive security practices including password hashing, role-based access control,
+              input validation, and least-privilege principles.
+            </p>
+          </section>
+          <section class="card">
+            <h4>Secure Architecture</h4>
+            <p>
+              Designed database layer to anticipate adversarial exploits, preventing SQL injection, privilege
+              escalation, and unauthorized data access.
+            </p>
+          </section>
+        </div>
+
+        <h3>Conclusion</h3>
+        <p>
+          This milestone demonstrates my ability to blend database theory and secure software engineering practices
+          into a functional and scalable solution. By refining schema design, implementing role-based stored
+          procedures, and securing authentication mechanisms, I successfully improved the reliability, maintainability,
+          and integrity of my CS-340 database application.
+        </p>
+
+        <h4>Through this enhancement, I showcased:</h4>
+        <ul style="color: var(--muted); line-height: 1.8; margin-left: 2rem;">
+          <li>Expertise in database normalization and query optimization</li>
+          <li>Proficiency in secure authentication and role-based design</li>
+          <li>The ability to anticipate vulnerabilities and enforce privacy protections through thoughtful schema and code structure</li>
+        </ul>
+
+        <p>
+          These accomplishments highlight my growth as a computer science professional ready to design, build,
+          and secure data-driven systems in real-world applications.
+        </p>
+
+        <h3>Repository & Resources</h3>
+        <p>
+          <a class="link" href="https://github.com/shekharchaudhary/CS-340" target="_blank" rel="noopener">
+            View Complete Project on GitHub →
+          </a>
+        </p>
+        <p>
+          <a class="link" href="https://github.com/shekharchaudhary/CS-300" target="_blank" rel="noopener">
+            Related CS-300 Data Structures Work →
+          </a>
+        </p>
+
+        <p style="margin-top: 3rem;">
+          <a class="btn primary" href="../index.html">← Back to Portfolio</a>
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© <span id="year"></span> Shekhar Chaudhary</small>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
