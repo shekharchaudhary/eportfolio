@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.inventorycontrolapplication.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_edit"
+            app:destination="@id/edit_data" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_data"
+        android:name="com.example.inventorycontrolapplication.ui.home.AddDataFragment"
+        android:label="Add Data"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/edit_data"
+        android:name="com.example.inventorycontrolapplication.ui.home.EditDataFragment"
+        android:label="Add Data"
+        tools:layout="@layout/fragment_settings">
+        <argument
+            android:name="itemId"
+            app:argType="string" />
+        <argument
+            android:name="itemCount"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.inventorycontrolapplication.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="com.example.inventorycontrolapplication.ui.help.HelpFragment"
+        android:label="@string/menu_help"
+        tools:layout="@layout/fragment_help" />
+</navigation>

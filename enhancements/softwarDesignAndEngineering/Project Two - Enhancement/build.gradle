@@ -1,0 +1,20 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Android Gradle Plugin
+        classpath "com.android.tools.build:gradle:7.0.4"
+        // Navigation Safe Args plugin used in :app module
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}

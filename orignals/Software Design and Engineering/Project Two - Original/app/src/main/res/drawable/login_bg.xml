@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base diagonal gradient -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#0D47A1"
+                android:centerColor="#512DA8"
+                android:endColor="#673AB7"
+                android:angle="315"/>
+        </shape>
+    </item>
+    <!-- Soft top highlight -->
+    <item
+        android:top="0dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="380dp"
+                android:centerX="50%"
+                android:centerY="0%"
+                android:startColor="#33FFFFFF"
+                android:endColor="#00FFFFFF"/>
+        </shape>
+    </item>
+    <!-- Bottom vignette -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#00000000"
+                android:endColor="#33000000"
+                android:angle="90"/>
+        </shape>
+    </item>
+</layer-list>

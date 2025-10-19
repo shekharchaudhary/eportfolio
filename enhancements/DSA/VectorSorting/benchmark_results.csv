@@ -1,3 +1,5 @@
 Algorithm,DataSize,TimeMs
 SelectionSort,0,0
 SelectionSort,76,0
+QuickSort,0,0
+SelectionSort,76,0
